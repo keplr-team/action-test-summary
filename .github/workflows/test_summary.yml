@@ -1,0 +1,20 @@
+name: Test Summary
+
+on: [pull_request]
+
+env:
+  CI: true
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+
+      - uses: keplr-team/.github/pr-comment@cc640662311328683ffa5dfc2f9c8654c2a36a8b
+        with:
+          recreate: true
+          message: |
+            Test Suites: ${{ env.numPassedTestSuites }} passed, ${{ env.numFailedTestSuites }} failed, ${{ env.numTotalTestSuites }} total
+            Tests: ${{ env.numPassedTests }} passed, ${{ env.numFailedTests }} failed, ${{ env.numTotalTests }} total
