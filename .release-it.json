@@ -1,0 +1,18 @@
+{
+  "plugins": {
+    "@keplr/release-it-github-changelog": {
+      "infile": "CHANGELOG.md"
+    }
+  },
+  "gitlab": {
+    "release": true,
+    "releaseName": "Test Summary Action ${version}"
+  },
+  "git": {
+    "tagName": "${version}",
+    "commit": true
+  },
+  "npm": {
+    "publish": false
+  }
+}
